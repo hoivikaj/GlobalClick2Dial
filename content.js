@@ -76,7 +76,7 @@
     const text = textNode.textContent;
     if (!text || text.length < 7) return;
 
-    const matches = window.Click2CallPhoneUtils.findPhoneNumbers(text, defaultCountryCode);
+    const matches = window.Click2DialPhoneUtils.findPhoneNumbers(text, defaultCountryCode);
     if (matches.length === 0) return;
 
     const parent = textNode.parentNode;
@@ -94,8 +94,8 @@
       const a = document.createElement('a');
       a.href = buildHref(protocol, customPrefix, m.e164);
       a.textContent = m.raw;
-      a.className = 'click2call-link';
-      a.setAttribute('data-click2call', '1');
+      a.className = 'click2dial-link';
+      a.setAttribute('data-click2dial', '1');
       frag.appendChild(a);
       lastEnd = m.end;
     }
@@ -112,7 +112,7 @@
         if (!p) return NodeFilter.FILTER_REJECT;
         if (SKIP_TAGS.has(p.tagName)) return NodeFilter.FILTER_REJECT;
         if (p.tagName === 'A' && p.getAttribute('href')) return NodeFilter.FILTER_REJECT;
-        if (p.getAttribute && p.getAttribute('data-click2call') === '1') return NodeFilter.FILTER_REJECT;
+        if (p.getAttribute && p.getAttribute('data-click2dial') === '1') return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -202,7 +202,7 @@
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== 'sync') return;
     if (changes.protocol || changes.customPrefix || changes.defaultCountryCode || changes.domainFilterMode || changes.domainList) {
-      document.querySelectorAll('a[data-click2call="1"]').forEach(a => {
+      document.querySelectorAll('a[data-click2dial="1"]').forEach(a => {
         const text = document.createTextNode(a.textContent);
         a.parentNode.replaceChild(text, a);
       });

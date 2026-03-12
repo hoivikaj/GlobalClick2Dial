@@ -1,6 +1,6 @@
-# GlobalClick2Call – Chrome Extension
+# GlobalClick2Dial – Chrome Extension
 
-**Source:** [github.com/hoivikaj/GlobalClick2Call](https://github.com/hoivikaj/GlobalClick2Call)
+**Source:** [github.com/hoivikaj/GlobalClick2Dial](https://github.com/hoivikaj/GlobalClick2Dial)
 
 Turns phone numbers on any webpage into clickable links. You choose the link type and default country in the extension settings.
 
@@ -42,7 +42,7 @@ Then add to `manifest.json` under `"action"` and `"icons"`:
 "action": {
   "default_popup": "popup.html",
   "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
-  "default_title": "GlobalClick2Call settings"
+  "default_title": "GlobalClick2Dial settings"
 },
 "icons": {
   "16": "icons/icon16.png",

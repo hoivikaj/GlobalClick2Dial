@@ -1,11 +1,11 @@
-/* GlobalClick2Call: style for converted phone links */
-.click2call-link {
+/* GlobalClick2Dial: style for converted phone links */
+.click2dial-link {
   color: inherit;
   text-decoration: underline;
   text-decoration-style: dotted;
   cursor: pointer;
 }
 
-.click2call-link:hover {
+.click2dial-link:hover {
   text-decoration-style: solid;
 }
