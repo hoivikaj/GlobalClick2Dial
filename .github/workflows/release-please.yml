@@ -14,11 +14,7 @@ jobs:
   release-please:
     runs-on: ubuntu-slim
     outputs:
-      release-created: ${{ steps.release-please.outputs.release-created }}
-      release-url: ${{ steps.release-please.outputs.release-url }}
-      major-version: ${{ steps.release-please.outputs.major-version }}
-      minor-version: ${{ steps.release-please.outputs.minor-version }}
-      patch-version: ${{ steps.release-please.outputs.patch-version }}
+      release_created: ${{ steps.release-please.outputs.release_created }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release-please
@@ -28,7 +24,7 @@ jobs:
           manifest-file: .release-please-manifest.json
 
   zip-and-upload:
-    if: ${{ needs.release-please.outputs.release-created }}
+    if: ${{ needs.release-please.outputs.release_created }}
     needs: release-please
     runs-on: ubuntu-slim
     steps:
