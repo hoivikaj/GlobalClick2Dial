@@ -37,16 +37,16 @@ jobs:
 
       - name: Create zip with root folder for sideloading
         run: |
-          ROOT="GlobalClick2Dial-${{ steps.release-please.outputs.version }}"
+          ROOT="GlobalClick2Dial"
           mkdir -p "$ROOT/lib"
           cp manifest.json content.js content.css options.html options.js options.css popup.html popup.js "$ROOT/"
           cp lib/phone-utils.js "$ROOT/lib/"
-          zip -r "GlobalClick2Dial-${{ steps.release-please.outputs.version }}.zip" "$ROOT"
+          zip -r "GlobalClick2Dial.zip" "$ROOT"
 
       - name: Upload zip to release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
-          files: GlobalClick2Dial-${{ steps.release-please.outputs.version }}.zip
+          files: GlobalClick2Dial.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
