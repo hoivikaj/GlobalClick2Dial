@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.0...v1.0.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* **detection:** number detection logic requires isolated string ([f242d3c](https://github.com/hoivikaj/GlobalClick2Dial/commit/f242d3cf341827a6cffad2bb740fc69cf2d76f63))
+
 ## [1.0.0](https://github.com/hoivikaj/GlobalClick2Dial/compare/v0.0.1...v1.0.0) (2026-03-12)
 
 
