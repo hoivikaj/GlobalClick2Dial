@@ -21,6 +21,7 @@ jobs:
       patch-version: ${{ steps.release-please.outputs.patch-version }}
     steps:
       - uses: googleapis/release-please-action@v4
+        id: release-please
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json

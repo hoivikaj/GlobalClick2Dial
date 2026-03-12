@@ -3,7 +3,6 @@
   "packages": {
     ".": {
       "release-type": "simple",
-      "package-name": "global-click2dial",
       "extra-files": [
         {
           "type": "json",
