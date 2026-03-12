@@ -28,30 +28,6 @@ Settings are stored in Chrome sync (if enabled).
 2. Turn on **Developer mode**.
 3. Click **Load unpacked** and select this folder.
 
-## Optional: icons
-
-To show your own icons, add PNGs under `icons/`:
-
-- `icons/icon16.png` (16×16)
-- `icons/icon48.png` (48×48)
-- `icons/icon128.png` (128×128)
-
-Then add to `manifest.json` under `"action"` and `"icons"`:
-
-```json
-"action": {
-  "default_popup": "popup.html",
-  "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
-  "default_title": "GlobalClick2Dial settings"
-},
-"icons": {
-  "16": "icons/icon16.png",
-  "48": "icons/icon48.png",
-  "128": "icons/icon128.png"
-}
-```
-
-Without these, Chrome uses the default extension icon.
 
 ## Files
 
