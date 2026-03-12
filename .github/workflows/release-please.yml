@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-slim
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }}
+      version: ${{ steps.release-please.outputs.version }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release-please
@@ -31,24 +33,20 @@ jobs:
       - name: Checkout at release tag
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.release.tag_name }}
-
-      - name: Set version from tag
-        id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          ref: ${{ needs.release-please.outputs.tag_name }}
 
       - name: Create zip with root folder for sideloading
         run: |
-          ROOT="GlobalClick2Dial-${{ steps.version.outputs.VERSION }}"
+          ROOT="GlobalClick2Dial-${{ steps.release-please.outputs.version }}"
           mkdir -p "$ROOT/lib"
           cp manifest.json content.js content.css options.html options.js options.css popup.html popup.js "$ROOT/"
           cp lib/phone-utils.js "$ROOT/lib/"
-          zip -r "GlobalClick2Dial-${{ steps.version.outputs.VERSION }}.zip" "$ROOT"
+          zip -r "GlobalClick2Dial-${{ steps.release-please.outputs.version }}.zip" "$ROOT"
 
       - name: Upload zip to release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event.release.tag_name }}
-          files: GlobalClick2Dial-${{ steps.version.outputs.VERSION }}.zip
+          tag_name: ${{ needs.release-please.outputs.tag_name }}
+          files: GlobalClick2Dial-${{ steps.release-please.outputs.version }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
