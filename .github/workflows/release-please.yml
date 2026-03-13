@@ -50,3 +50,11 @@ jobs:
           files: GlobalClick2Dial.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: browser-actions/release-chrome-extension@latest
+        with:
+          extension-id: "cmgloibimlcofcpcocgnkmemcdahddhh"
+          extension-path: "GlobalClick2Dial.zip"
+          oauth-client-id: ${{ secrets.OAUTH_CLIENT_ID }}
+          oauth-client-secret: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          oauth-refresh-token: ${{ secrets.OAUTH_REFRESH_TOKEN }}
