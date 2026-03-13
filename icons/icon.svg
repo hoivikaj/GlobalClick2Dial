@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <radialGradient id="bgGrad" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1e3a1e"/>
+      <stop offset="100%" stop-color="#0a150a"/>
+    </radialGradient>
+    <radialGradient id="globeGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#2d5a2d"/>
+      <stop offset="100%" stop-color="#1a3a1a"/>
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="globeClip">
+      <circle cx="64" cy="64" r="42"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="22" ry="22" fill="url(#bgGrad)"/>
+
+  <!-- Globe circle -->
+  <circle cx="64" cy="64" r="42" fill="url(#globeGrad)" stroke="#3a7a3a" stroke-width="1.5"/>
+
+  <!-- Globe latitude lines -->
+  <g clip-path="url(#globeClip)" fill="none" stroke="#4a9a4a" stroke-width="1" opacity="0.6">
+    <!-- Equator -->
+    <ellipse cx="64" cy="64" rx="42" ry="13"/>
+    <!-- Upper latitude -->
+    <ellipse cx="64" cy="47" rx="34" ry="10"/>
+    <!-- Lower latitude -->
+    <ellipse cx="64" cy="81" rx="34" ry="10"/>
+    <!-- Top latitude -->
+    <ellipse cx="64" cy="32" rx="18" ry="6"/>
+    <!-- Bottom latitude -->
+    <ellipse cx="64" cy="96" rx="18" ry="6"/>
+  </g>
+
+  <!-- Globe longitude lines -->
+  <g clip-path="url(#globeClip)" fill="none" stroke="#4a9a4a" stroke-width="1" opacity="0.6">
+    <!-- Center vertical -->
+    <line x1="64" y1="22" x2="64" y2="106"/>
+    <!-- Left arc -->
+    <path d="M64,22 Q36,44 36,64 Q36,84 64,106"/>
+    <!-- Right arc -->
+    <path d="M64,22 Q92,44 92,64 Q92,84 64,106"/>
+    <!-- Far left arc -->
+    <path d="M64,22 Q16,44 22,64 Q16,84 64,106"/>
+    <!-- Far right arc -->
+    <path d="M64,22 Q112,44 106,64 Q112,84 64,106"/>
+  </g>
+
+  <!-- Globe outline -->
+  <circle cx="64" cy="64" r="42" fill="none" stroke="#3a7a3a" stroke-width="1.5"/>
+
+  <!-- Phone handset (white, bold) -->
+  <g filter="url(#glow)" transform="translate(64,64)">
+    <!-- Phone body using a path - classic handset shape -->
+    <path d="
+      M -18 -22
+      C -18 -26, -14 -30, -10 -30
+      L -2 -28
+      C 2 -27, 4 -23, 2 -19
+      L -2 -11
+      C -4 -7, -2 -4, 2 0
+      L 8 6
+      C 12 10, 15 11, 18 8
+      L 24 4
+      C 28 1, 32 3, 33 7
+      L 34 15
+      C 35 19, 32 24, 28 24
+      C 10 26, -16 10, -22 -8
+      C -24 -14, -22 -20, -18 -22
+      Z
+    " fill="#ffffff" opacity="0.97"/>
+  </g>
+
+  <!-- Small click cursor in bottom right of phone area -->
+  <g transform="translate(88, 86)" filter="url(#glow)">
+    <!-- Cursor pointer -->
+    <polygon points="0,0 0,16 4,12 7,19 10,18 7,11 12,11" fill="#4dff6e" stroke="#2db84d" stroke-width="0.8" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Subtle green ring glow around globe edge -->
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#3ddc6a" stroke-width="0.5" opacity="0.3"/>
+</svg>
