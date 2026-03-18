@@ -43,3 +43,4 @@ Settings are stored in Chrome sync (if enabled).
 ## License
 
 MIT
+
