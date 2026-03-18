@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.3...v1.1.0) (2026-03-18)
+
+
+### Features
+
+* **ci:** CI improvements ([f0bb5fa](https://github.com/hoivikaj/GlobalClick2Dial/commit/f0bb5fa465c1132a3aca7232003ff0e9892eecce))
+
 ## [1.0.3](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.2...v1.0.3) (2026-03-18)
 
 
