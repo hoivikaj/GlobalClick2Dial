@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GlobalClick2Dial",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert phone numbers on web pages into clickable call links (tel, callto, zoomphonecall, or custom).",
   "permissions": [
     "storage"

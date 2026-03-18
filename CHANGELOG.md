@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.2...v1.0.3) (2026-03-18)
+
+
+### Bug Fixes
+
+* number detection logic, include test page ([ea45bb5](https://github.com/hoivikaj/GlobalClick2Dial/commit/ea45bb5ecb87953779ade13898aa6c9368cfe50e))
+
 ## [1.0.2](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.1...v1.0.2) (2026-03-13)
 
 
