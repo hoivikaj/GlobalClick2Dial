@@ -58,3 +58,19 @@ jobs:
           oauth-client-id: ${{ secrets.OAUTH_CLIENT_ID }}
           oauth-client-secret: ${{ secrets.OAUTH_CLIENT_SECRET }}
           oauth-refresh-token: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+
+      - name: Publish to Chrome Web Store
+        id: publish-chrome-extension
+        uses: puzzlers-labs/chrome-webstore-publish@v1
+        with:
+          mode: publish # Or `sign` to sign the extension and publish at a later step (manually).
+          extension_id: "cmgloibimlcofcpcocgnkmemcdahddhh"
+          zip_file_path: ./GlobalClick2Dial.zip
+          client_id: ${{ secrets.OAUTH_CLIENT_ID }}
+          client_secret: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          refresh_token: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+          publish_target: public # Or `testers` for internal publishing target to TrustedTesters.
+          expedited_review: true # This does not guarantee an expedited Review process. But it makes an attempt.
+          # Only one of the following should be provided:
+          # crx_private_key: ${{ secrets.CRX_PRIVATE_KEY }}
+          # crx_private_key_path: ./path/to/key.pem

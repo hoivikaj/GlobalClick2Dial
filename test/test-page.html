@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalClick2Dial – Phone number detection test page</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    h1 { font-size: 1.5rem; margin-top: 2em; }
+    h1:first-of-type { margin-top: 0; }
+    h2 { font-size: 1.1rem; color: #555; margin-top: 1.5em; }
+    .block { margin: 0.5em 0 1em; padding: 12px; background: #f5f5f5; border-radius: 8px; }
+    .block p { margin: 0.4em 0; }
+    .should-link { border-left: 4px solid #0a0; }
+    .should-not-link { border-left: 4px solid #c00; }
+    .note { font-size: 0.9em; color: #666; margin-top: 0.5em; }
+    code { background: #eee; padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Phone number detection test page</h1>
+  <p class="note">Load this page with the GlobalClick2Dial extension enabled. Numbers in green-bordered blocks should become clickable links; red-bordered blocks should not.</p>
+
+  <h2>Should be detected (valid formats)</h2>
+
+  <div class="block should-link">
+    <p><strong>US with parentheses:</strong> Call us at (555) 123-4567 for support.</p>
+    <p><strong>US with dashes:</strong> 555-123-4567</p>
+    <p><strong>US with dots:</strong> 555.123.4567</p>
+    <p><strong>US with spaces:</strong> 555 123 4567</p>
+    <p><strong>US plain 10 digits:</strong> 5551234567</p>
+  </div>
+
+  <div class="block should-link">
+    <p><strong>International with +:</strong> +1 555 123 4567 or +44 20 7123 4567</p>
+    <p><strong>UK style:</strong> 020 7123 4567 (if default country is 44)</p>
+  </div>
+
+  <div class="block should-link">
+    <p><strong>At start of sentence:</strong> 555-987-6543 is the main line.</p>
+    <p><strong>At end of sentence:</strong> The number is 555-987-6543.</p>
+    <p><strong>After comma:</strong> Contact sales, 555-111-2222, for pricing.</p>
+    <p><strong>In parentheses:</strong> Main office (555) 333-4444 is open 9–5.</p>
+  </div>
+
+  <div class="block should-link">
+    <p><strong>International 11+ digits with +:</strong> +1 555 123 4567</p>
+  </div>
+
+  <h2>Should NOT be detected (bad examples)</h2>
+
+  <div class="block should-not-link">
+    <p><strong>ID with hyphen (no space):</strong> MAT-25082189552</p>
+    <p><strong>Letters attached:</strong> abcd5555555efgh</p>
+    <p><strong>Underscore prefix:</strong> REF_5551234567 or Order_ID_5551234567</p>
+    <p><strong>11+ digits without + (IDs, not phones):</strong> 25082189552 or 1-555-123-4567 or 111111111111</p>
+  </div>
+
+  <div class="block should-not-link">
+    <p><strong>Extension suffix (letters after):</strong> 555-123-4567ext or 555-123-4567 x100</p>
+    <p><strong>Part of word:</strong> phone5551234567number</p>
+    <p><strong>Invoice/code style:</strong> INV-555-12345678</p>
+  </div>
+
+  <div class="block should-not-link">
+    <p><strong>Long digit string (ID/serial):</strong> 123456789012345</p>
+    <p><strong>Short digit string (too few):</strong> 555-123 (only 6 digits)</p>
+  </div>
+
+  <h2>Edge cases</h2>
+
+  <div class="block should-link">
+    <p><strong>Hash before (often still valid):</strong> Order #555-123-4567</p>
+    <p><strong>Colon before:</strong> Tel: 555-123-4567</p>
+    <p><strong>Two valid numbers in one line:</strong> Call 555-111-2222 or 555-333-4444 for help.</p>
+  </div>
+
+  <p class="note" style="margin-top: 2em;">If a number in a green block does not become a link, or a number in a red block does become a link, the detection rules may need adjustment.</p>
+</body>
+</html>
