@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.1...v1.1.2) (2026-03-19)
+
+
+### Bug Fixes
+
+* **ci:** workflows ([3d42fda](https://github.com/hoivikaj/GlobalClick2Dial/commit/3d42fda0b664a38c901b1a542ce1e2f9570316f1))
+
 ## [1.1.1](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.0...v1.1.1) (2026-03-19)
 
 
