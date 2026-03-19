@@ -27,9 +27,10 @@ jobs:
       - name: Create zip with root folder for sideloading
         run: |
           ROOT="GlobalClick2Dial"
-          mkdir -p "$ROOT/lib"
+          mkdir -p "$ROOT/lib" "$ROOT/icons"
           cp manifest.json content.js content.css options.html options.js options.css popup.html popup.js "$ROOT/"
           cp lib/phone-utils.js "$ROOT/lib/"
+          cp icons/*.png "$ROOT/icons/"
           zip -r "GlobalClick2Dial.zip" "$ROOT"
 
       - uses: browser-actions/release-chrome-extension@latest
