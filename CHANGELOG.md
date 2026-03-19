@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.0...v1.1.1) (2026-03-19)
+
+
+### Bug Fixes
+
+* icon references ([d2d169b](https://github.com/hoivikaj/GlobalClick2Dial/commit/d2d169b39ccaa37a4a6943124cfc7558fb6cd202))
+
 ## [1.1.0](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.0.3...v1.1.0) (2026-03-18)
 
 
