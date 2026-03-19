@@ -1,0 +1,41 @@
+name: chrome-sync
+
+on:
+  workflow_dispatch:
+
+inputs:
+  tag_name:
+    description: The tag name to release
+    required: true
+    default: main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+
+  zip-and-upload:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout at release tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.tag_name }}
+
+      - name: Create zip with root folder for sideloading
+        run: |
+          ROOT="GlobalClick2Dial"
+          mkdir -p "$ROOT/lib"
+          cp manifest.json content.js content.css options.html options.js options.css popup.html popup.js "$ROOT/"
+          cp lib/phone-utils.js "$ROOT/lib/"
+          zip -r "GlobalClick2Dial.zip" "$ROOT"
+
+      - uses: browser-actions/release-chrome-extension@latest
+        with:
+          extension-id: "cmgloibimlcofcpcocgnkmemcdahddhh"
+          extension-path: "GlobalClick2Dial.zip"
+          oauth-client-id: ${{ secrets.OAUTH_CLIENT_ID }}
+          oauth-client-secret: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          oauth-refresh-token: ${{ secrets.OAUTH_REFRESH_TOKEN }}
