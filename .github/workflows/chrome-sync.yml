@@ -3,11 +3,11 @@ name: chrome-sync
 on:
   workflow_dispatch:
 
-inputs:
-  tag_name:
-    description: The tag name to release
-    required: true
-    default: main
+    inputs:
+      tag_name:
+        description: The tag name to release
+        required: true
+        default: main
 
 permissions:
   contents: write
