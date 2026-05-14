@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/hoivikaj/GlobalClick2Dial/compare/v2.0.0...v2.0.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* shorten manifest description to comply with 132 char Web Store limit ([eba04e3](https://github.com/hoivikaj/GlobalClick2Dial/commit/eba04e3ae5988056b907d2f85ad50aa60a53fb82))
+
 ## [2.0.0](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.1...v2.0.0) (2026-05-14)
 
 
