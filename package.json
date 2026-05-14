@@ -5,7 +5,7 @@
   "description": "Chrome extension build tooling for GlobalClick2Dial (US / toll-free phone link detection).",
   "main": "dist/content.js",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "directories": {
     "test": "test"
