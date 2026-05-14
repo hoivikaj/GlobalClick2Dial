@@ -24,12 +24,23 @@ jobs:
         with:
           ref: ${{ inputs.tag_name }}
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install, test, and build
+        run: |
+          npm ci
+          npm test
+          npm run build
+
       - name: Create zip with root folder for sideloading
         run: |
           ROOT="GlobalClick2Dial"
-          mkdir -p "$ROOT/lib" "$ROOT/icons"
-          cp manifest.json content.js content.css options.html options.js options.css popup.html popup.js "$ROOT/"
-          cp lib/phone-utils.js "$ROOT/lib/"
+          mkdir -p "$ROOT/dist" "$ROOT/icons"
+          cp manifest.json content.css background.js options.html options.js options.css popup.html popup.js "$ROOT/"
+          cp dist/phone-utils.js dist/content.js "$ROOT/dist/"
           cp icons/*.png "$ROOT/icons/"
           zip -r "GlobalClick2Dial.zip" "$ROOT"
 

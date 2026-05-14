@@ -16,22 +16,40 @@
     }
     h2 { font-size: 1rem; margin: 0 0 12px 0; }
     p { margin: 0 0 14px 0; color: #94a3b8; font-size: 13px; }
-    a {
+    .row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    button, a.btn {
       display: inline-block;
       padding: 8px 14px;
-      background: #3b82f6;
-      color: #fff;
-      text-decoration: none;
+      border: none;
       border-radius: 6px;
       font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-family: inherit;
     }
-    a:hover { background: #2563eb; }
+    a.btn {
+      background: #3b82f6;
+      color: #fff;
+    }
+    a.btn:hover { background: #2563eb; }
+    button#disableSite {
+      background: #334155;
+      color: #e2e8f0;
+    }
+    button#disableSite:hover { background: #475569; }
+    #popupStatus { font-size: 12px; color: #94a3b8; min-height: 1.2em; }
   </style>
 </head>
 <body>
   <h2>GlobalClick2Dial</h2>
-  <p>Phone numbers on this page are turned into clickable links. Choose the link type and default country in settings.</p>
-  <a href="#" id="openOptions">Open settings</a>
+  <p>US and toll-free (+1) numbers on this page become clickable dial links. The toolbar badge shows how many links are on the tab.</p>
+  <div class="row">
+    <button type="button" id="disableSite">Disable on this site</button>
+    <a href="#" class="btn" id="openOptions">Open settings</a>
+  </div>
+  <p id="popupStatus" aria-live="polite"></p>
   <script src="popup.js"></script>
 </body>
 </html>

@@ -2,13 +2,14 @@
   "manifest_version": 3,
   "name": "GlobalClick2Dial",
   "version": "1.1.1",
-  "description": "Convert phone numbers on web pages into clickable call links (tel, callto, zoomphonecall, or custom).",
+  "description": "Turn US and NANP toll-free (+1) numbers on web pages into tel/callto/zoom/custom links. Runs locally; no data is sent to external servers.",
   "permissions": [
-    "storage"
+    "storage",
+    "activeTab"
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "options_page": "options.html",
   "icons": {
     "16": "icons/icon16.png",
@@ -30,8 +31,8 @@
         "<all_urls>"
       ],
       "js": [
-        "lib/phone-utils.js",
-        "content.js"
+        "dist/phone-utils.js",
+        "dist/content.js"
       ],
       "css": [
         "content.css"

@@ -10,7 +10,7 @@
     <header>
       <h1>GlobalClick2Dial</h1>
       <p class="subtitle">
-        Configure how phone numbers are turned into clickable links.
+        Configure how US and toll-free (+1) phone numbers are turned into clickable links.
       </p>
     </header>
 
@@ -88,28 +88,6 @@
           <span class="hint inline" id="domainListHint"
             >Domains where the extension is
             <strong>disabled</strong> (blacklist).</span
-          >
-        </div>
-      </section>
-
-      <section>
-        <h2>Default country code</h2>
-        <p class="hint">
-          When a number has no country code, assume this country. Numbers are
-          normalized to E.164 (e.g. +1 for US).
-        </p>
-        <div class="field">
-          <label for="defaultCountryCode">Country code (digits only)</label>
-          <input
-            type="text"
-            id="defaultCountryCode"
-            placeholder="1"
-            maxlength="4"
-            autocomplete="off"
-          />
-          <span class="hint inline"
-            >e.g. <code>1</code> (US/Canada), <code>44</code> (UK),
-            <code>49</code> (Germany)</span
           >
         </div>
       </section>

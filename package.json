@@ -1,0 +1,39 @@
+{
+  "name": "globalclick2dial",
+  "version": "1.1.1",
+  "private": true,
+  "description": "Chrome extension build tooling for GlobalClick2Dial (US / toll-free phone link detection).",
+  "main": "dist/content.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "postinstall": "node scripts/build.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoivikaj/GlobalClick2Dial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hoivikaj/GlobalClick2Dial/issues"
+  },
+  "homepage": "https://github.com/hoivikaj/GlobalClick2Dial#readme",
+  "dependencies": {
+    "libphonenumber-js": "^1.13.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "vitest": "^4.1.6"
+  }
+}

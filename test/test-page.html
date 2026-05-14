@@ -25,60 +25,61 @@
 </head>
 <body>
   <h1>Phone number detection test page</h1>
-  <p class="note">Load this page with the GlobalClick2Dial extension enabled. Numbers in green-bordered blocks should become clickable links; red-bordered blocks should not.</p>
+  <p class="note">Load this page with the GlobalClick2Dial extension enabled. Detection is limited to <strong>US numbers</strong> and <strong>NANP toll-free (+1)</strong> only. Numbers in green-bordered blocks should become clickable links; red-bordered blocks should not.</p>
 
   <h2>Should be detected (valid formats)</h2>
 
   <div class="block should-link">
-    <p><strong>US with parentheses:</strong> Call us at (555) 123-4567 for support.</p>
-    <p><strong>US with dashes:</strong> 555-123-4567</p>
-    <p><strong>US with dots:</strong> 555.123.4567</p>
-    <p><strong>US with spaces:</strong> 555 123 4567</p>
-    <p><strong>US plain 10 digits:</strong> 5551234567</p>
+    <p><strong>US with parentheses:</strong> Call us at (201) 555-0123 for support.</p>
+    <p><strong>US with dashes:</strong> 201-555-0123</p>
+    <p><strong>US with dots:</strong> 201.555.0123</p>
+    <p><strong>US with spaces:</strong> 201 555 0123</p>
+    <p><strong>US plain 10 digits:</strong> 2015550123</p>
   </div>
 
   <div class="block should-link">
-    <p><strong>International with +:</strong> +1 555 123 4567 or +44 20 7123 4567</p>
-    <p><strong>UK style:</strong> 020 7123 4567 (if default country is 44)</p>
+    <p><strong>With +1:</strong> +1 202 555 0199</p>
+    <p><strong>Toll-free:</strong> 800-234-5678 or 888-555-1212</p>
   </div>
 
   <div class="block should-link">
-    <p><strong>At start of sentence:</strong> 555-987-6543 is the main line.</p>
-    <p><strong>At end of sentence:</strong> The number is 555-987-6543.</p>
-    <p><strong>After comma:</strong> Contact sales, 555-111-2222, for pricing.</p>
-    <p><strong>In parentheses:</strong> Main office (555) 333-4444 is open 9–5.</p>
+    <p><strong>At start of sentence:</strong> 415-555-1212 is the main line.</p>
+    <p><strong>At end of sentence:</strong> The number is 415-555-1212.</p>
+    <p><strong>After comma:</strong> Contact sales, 650-253-0000, for pricing.</p>
+    <p><strong>In parentheses:</strong> Main office (650) 253-0000 is open 9–5.</p>
   </div>
 
   <div class="block should-link">
-    <p><strong>International 11+ digits with +:</strong> +1 555 123 4567</p>
+    <p><strong>Eleven-digit US (leading 1):</strong> 1-201-555-0123</p>
   </div>
 
   <h2>Should NOT be detected (bad examples)</h2>
 
   <div class="block should-not-link">
     <p><strong>ID with hyphen (no space):</strong> MAT-25082189552</p>
-    <p><strong>Letters attached:</strong> abcd5555555efgh</p>
-    <p><strong>Underscore prefix:</strong> REF_5551234567 or Order_ID_5551234567</p>
-    <p><strong>11+ digits without + (IDs, not phones):</strong> 25082189552 or 1-555-123-4567 or 111111111111</p>
+    <p><strong>Letters attached:</strong> abcd2015550123efgh</p>
+    <p><strong>Underscore prefix:</strong> REF_2015550123 or Order_ID_2015550123</p>
+    <p><strong>Non-US / non–toll-free +1:</strong> 416-555-0123 (Canada) or +44 20 7123 4567 (UK)</p>
   </div>
 
   <div class="block should-not-link">
-    <p><strong>Extension suffix (letters after):</strong> 555-123-4567ext or 555-123-4567 x100</p>
-    <p><strong>Part of word:</strong> phone5551234567number</p>
-    <p><strong>Invoice/code style:</strong> INV-555-12345678</p>
+    <p><strong>Extension suffix (letters after):</strong> 201-555-0123ext or 201-555-0123 x100</p>
+    <p><strong>Part of word:</strong> phone2015550123number</p>
+    <p><strong>Invoice/code style:</strong> INV-201-5550123</p>
   </div>
 
   <div class="block should-not-link">
     <p><strong>Long digit string (ID/serial):</strong> 123456789012345</p>
-    <p><strong>Short digit string (too few):</strong> 555-123 (only 6 digits)</p>
+    <p><strong>Short digit string (too few):</strong> 201-55 (only 6 digits)</p>
+    <p><strong>Date (MM.DD.YYYY, not a phone):</strong> 02.24.2026</p>
   </div>
 
   <h2>Edge cases</h2>
 
   <div class="block should-link">
-    <p><strong>Hash before (often still valid):</strong> Order #555-123-4567</p>
-    <p><strong>Colon before:</strong> Tel: 555-123-4567</p>
-    <p><strong>Two valid numbers in one line:</strong> Call 555-111-2222 or 555-333-4444 for help.</p>
+    <p><strong>Hash before (often still valid):</strong> Order #201-555-0123</p>
+    <p><strong>Colon before:</strong> Tel: 201-555-0123</p>
+    <p><strong>Two valid numbers in one line:</strong> Call 415-555-1212 or 650-253-0000 for help.</p>
   </div>
 
   <p class="note" style="margin-top: 2em;">If a number in a green block does not become a link, or a number in a red block does become a link, the detection rules may need adjustment.</p>
