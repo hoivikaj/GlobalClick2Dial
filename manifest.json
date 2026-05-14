@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GlobalClick2Dial",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Turn US and NANP toll-free (+1) numbers on web pages into tel/callto/zoom/custom links. Runs locally; no data is sent to external servers.",
   "permissions": [
     "storage",

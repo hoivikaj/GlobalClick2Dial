@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.1...v2.0.0) (2026-05-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* Unpacked load requires npm ci (or npm run build) so dist/ exists. Root content.js and lib/phone-utils.js removed from the repo.
+
+### Features
+
+* npm build, libphonenumber detection, and CI ([02158a2](https://github.com/hoivikaj/GlobalClick2Dial/commit/02158a2edbd28c75dfe3f170c55b376fc2d1ea6c))
+
+
+### Bug Fixes
+
+* **ci:** workflows ([3d42fda](https://github.com/hoivikaj/GlobalClick2Dial/commit/3d42fda0b664a38c901b1a542ce1e2f9570316f1))
+* **deps:** bump the github-actions group across 1 directory with 4 updates ([#15](https://github.com/hoivikaj/GlobalClick2Dial/issues/15)) ([82577b8](https://github.com/hoivikaj/GlobalClick2Dial/commit/82577b876f7c3102407f6d64768592a9248e336f))
+
 ## [1.1.1](https://github.com/hoivikaj/GlobalClick2Dial/compare/v1.1.0...v1.1.1) (2026-03-19)
 
 
