@@ -1,6 +1,6 @@
 {
   "name": "globalclick2dial",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "description": "Chrome extension build tooling for GlobalClick2Dial (US / toll-free phone link detection).",
   "main": "dist/content.js",
