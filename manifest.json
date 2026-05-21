@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GlobalClick2Dial",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Turn US and toll-free (+1) phone numbers on any page into clickable dial links. Runs locally; no data sent externally.",
   "permissions": [
     "storage",
