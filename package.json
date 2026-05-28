@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/hoivikaj/GlobalClick2Dial#readme",
   "dependencies": {
-    "libphonenumber-js": "^1.13.2"
+    "libphonenumber-js": "^1.13.3"
   },
   "devDependencies": {
     "esbuild": "^0.28.0",
