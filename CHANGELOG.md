@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.3](https://github.com/hoivikaj/GlobalClick2Dial/compare/v2.0.2...v2.0.3) (2026-06-29)
+
+
+### Bug Fixes
+
+* **deps:** bump actions/checkout from 6 to 7 in the github-actions group ([#24](https://github.com/hoivikaj/GlobalClick2Dial/issues/24)) ([af15fe9](https://github.com/hoivikaj/GlobalClick2Dial/commit/af15fe9c826d5f615cd4bf50912010cb39e4adca))
+* **deps:** bump libphonenumber-js in the npm-production group ([#20](https://github.com/hoivikaj/GlobalClick2Dial/issues/20)) ([d77f616](https://github.com/hoivikaj/GlobalClick2Dial/commit/d77f616001b0b6653c7fb1d38313c1dac3de3de2))
+* **deps:** bump libphonenumber-js in the npm-production group ([#25](https://github.com/hoivikaj/GlobalClick2Dial/issues/25)) ([7059148](https://github.com/hoivikaj/GlobalClick2Dial/commit/7059148dbd7d49af17b6d52c6e1ebef1510d1a51))
+
 ## [2.0.2](https://github.com/hoivikaj/GlobalClick2Dial/compare/v2.0.1...v2.0.2) (2026-05-21)
 
 
