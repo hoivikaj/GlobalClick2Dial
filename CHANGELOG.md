@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.4](https://github.com/hoivikaj/GlobalClick2Dial/compare/v2.0.3...v2.0.4) (2026-10-29)
+
+
+### Bug Fixes
+
+* **deps:** bump actions/setup-node in the github-actions group ([#28](https://github.com/hoivikaj/GlobalClick2Dial/issues/28)) ([ae2059f](https://github.com/hoivikaj/GlobalClick2Dial/commit/ae2059ff9cdadada77b92d36717cc610a651b1c8))
+* **deps:** bump libphonenumber-js ([#31](https://github.com/hoivikaj/GlobalClick2Dial/issues/31)) ([89c8258](https://github.com/hoivikaj/GlobalClick2Dial/commit/89c82589d68366e8b833cd6507e4a3a3ac8a072c))
+* **deps:** bump libphonenumber-js in the npm-production group ([#26](https://github.com/hoivikaj/GlobalClick2Dial/issues/26)) ([e086682](https://github.com/hoivikaj/GlobalClick2Dial/commit/e086682cb120af9c0055fdadc9afbb8047836755))
+* stop duplicating text when pages re-render linked phone numbers ([9126315](https://github.com/hoivikaj/GlobalClick2Dial/commit/912631532474382aa852c85a8019f3c64f47c239))
+
 ## [2.0.3](https://github.com/hoivikaj/GlobalClick2Dial/compare/v2.0.2...v2.0.3) (2026-06-29)
 
 
