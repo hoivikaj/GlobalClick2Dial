@@ -82,6 +82,25 @@
     <p><strong>Two valid numbers in one line:</strong> Call 415-555-1212 or 650-253-0000 for help.</p>
   </div>
 
+  <h2>Dynamic re-render (chat UI)</h2>
+
+  <div class="block should-link">
+    <p><strong>Re-rendered every second; the line must appear once:</strong> <span id="rerender"></span></p>
+  </div>
+  <script>
+    (function () {
+      // Mimics a framework that keeps a reference to its text node and swaps it on each render.
+      const host = document.getElementById('rerender');
+      let node = null;
+      setInterval(function render() {
+        if (node && node.parentNode) node.parentNode.removeChild(node);
+        node = document.createTextNode('Please call 650-253-0000 for help.');
+        host.appendChild(node);
+        return render;
+      }(), 1000);
+    })();
+  </script>
+
   <p class="note" style="margin-top: 2em;">If a number in a green block does not become a link, or a number in a red block does become a link, the detection rules may need adjustment.</p>
 </body>
 </html>

@@ -10,6 +10,27 @@ import {
 
 const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'IFRAME', 'OBJECT', 'CODE', 'PRE']);
 
+// Original text node -> { text, data, nodes }. The original node stays in the DOM
+// (holding the leading text) so page frameworks that own it can still update/remove it.
+const linkedTextNodes = new WeakMap();
+// Generated node -> original text node it was split from.
+const generatedOwner = new WeakMap();
+
+function unlinkTextNode(textNode, restoreText) {
+  const rec = linkedTextNodes.get(textNode);
+  if (!rec) return;
+  linkedTextNodes.delete(textNode);
+  rec.nodes.forEach((node) => {
+    if (node.parentNode) node.parentNode.removeChild(node);
+  });
+  if (restoreText) textNode.data = rec.text;
+}
+
+function isUnchangedLinkedNode(textNode) {
+  const rec = linkedTextNodes.get(textNode);
+  return !!rec && textNode.data === rec.data;
+}
+
 function reportBadgeCount() {
   try {
     const count = document.querySelectorAll('a[data-click2dial="1"]').length;
@@ -20,6 +41,7 @@ function reportBadgeCount() {
 }
 
 function processTextNode(textNode, protocol, customPrefix) {
+  if (generatedOwner.has(textNode) || isUnchangedLinkedNode(textNode)) return 0;
   const text = textNode.textContent;
   if (!text || text.length < 7) return 0;
   if (!hasAtLeastDigits(text, 7)) return 0;
@@ -33,11 +55,19 @@ function processTextNode(textNode, protocol, customPrefix) {
   if (parent.tagName === 'A' && parent.getAttribute('href')) return 0;
 
   const frag = document.createDocumentFragment();
-  let lastEnd = 0;
+  const nodes = [];
+  const appendText = (value) => {
+    const tn = document.createTextNode(value);
+    generatedOwner.set(tn, textNode);
+    nodes.push(tn);
+    frag.appendChild(tn);
+  };
+  const leading = text.slice(0, matches[0].start);
+  let lastEnd = matches[0].start;
 
   for (const m of matches) {
     if (m.start > lastEnd) {
-      frag.appendChild(document.createTextNode(text.slice(lastEnd, m.start)));
+      appendText(text.slice(lastEnd, m.start));
     }
     const a = document.createElement('a');
     a.href = buildHref(protocol, customPrefix, m.e164);
@@ -46,13 +76,17 @@ function processTextNode(textNode, protocol, customPrefix) {
     a.setAttribute('data-click2dial', '1');
     a.setAttribute('rel', 'nofollow noopener');
     a.setAttribute('aria-label', 'Call ' + m.raw);
+    generatedOwner.set(a, textNode);
+    nodes.push(a);
     frag.appendChild(a);
     lastEnd = m.end;
   }
   if (lastEnd < text.length) {
-    frag.appendChild(document.createTextNode(text.slice(lastEnd)));
+    appendText(text.slice(lastEnd));
   }
-  parent.replaceChild(frag, textNode);
+  textNode.data = leading;
+  parent.insertBefore(frag, textNode.nextSibling);
+  linkedTextNodes.set(textNode, { text, data: leading, nodes });
   return matches.length;
 }
 
@@ -158,8 +192,14 @@ function startObserving() {
   const observer = new MutationObserver((mutations) => {
     for (const m of mutations) {
       if (m.type === 'characterData' && m.target && m.target.nodeType === Node.TEXT_NODE) {
+        // The page rewrote a text node we linked: drop our nodes so they don't duplicate.
+        if (linkedTextNodes.has(m.target) && !isUnchangedLinkedNode(m.target)) {
+          unlinkTextNode(m.target, false);
+        }
         pending.push(m.target);
       } else {
+        // The page removed a text node we linked: remove our leftovers with it.
+        m.removedNodes.forEach((node) => unlinkTextNode(node, true));
         m.addedNodes.forEach((node) => pending.push(node));
       }
     }
@@ -187,9 +227,14 @@ init();
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName !== 'sync') return;
   if (changes.protocol || changes.customPrefix || changes.domainFilterMode || changes.domainList) {
+    currentSettings = null;
     document.querySelectorAll('a[data-click2dial="1"]').forEach((a) => {
-      const text = document.createTextNode(a.textContent);
-      a.parentNode.replaceChild(text, a);
+      const owner = generatedOwner.get(a);
+      if (owner && linkedTextNodes.has(owner)) {
+        unlinkTextNode(owner, true);
+      } else if (a.parentNode) {
+        a.parentNode.replaceChild(document.createTextNode(a.textContent), a);
+      }
     });
     chrome.storage.sync.get(defaults, (settings) => run(settings));
   }
