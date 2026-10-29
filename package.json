@@ -33,7 +33,7 @@
     "libphonenumber-js": "^1.13.7"
   },
   "devDependencies": {
-    "esbuild": "^0.28.1",
-    "vitest": "^4.1.9"
+    "esbuild": "^0.28.2",
+    "vitest": "^4.1.10"
   }
 }
